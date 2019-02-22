@@ -1,8 +1,8 @@
 pipeline {
     agent any
     tools { 
-        maven 'maven' 
-        jdk 'java1.8.191' 
+        maven 'maven3.5' 
+        jdk 'java1.8-201' 
     }
     stages {
         stage ('Initialize') {
@@ -16,12 +16,12 @@ pipeline {
 
         stage ('scm') {
             steps {
-                git credentialsId: 'ef9198fe-193d-4977-ab29-e622c949f981', url: 'https://github.com/ranand219/project1.git'
+                 git credentialsId: '78c165e4-a738-46c7-b468-984310b0a9c6', url: 'https://github.com/Priyasrivinod/project1.git'
             }
         }
         
         stage ('build') {
-	    when { changeset "anand/*.txt" }
+	   
             steps {
                 sh 'mvn clean install'
             }
